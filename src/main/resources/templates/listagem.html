@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Livros woooow</title>
+</head>
+<body>
+    <form method="post" action="/livro/salvar">
+        <label for="titulo">Titulo:</label> <input type="text" name="titulo" id="titulo" size="100" /><br>
+        <label for="autor">Autor:</label> <input type="text" name="autor" id="autor" size="100" /><br>
+        <input type="submit"/>
+
+    </form>
+
+    <div th:unless="${#lists.isEmpty(livros)}">
+        <dl th:each="livro : ${livros}">
+            <span th:text="${livro.titulo}"></span><br>
+            <span th:text="${livro.autor}"></span><br>
+        </dl>
+
+
+    </div>
+
+    <div th:if="${#lists.isEmpty(livros)}">
+        <p>Nao tem nenhum livro don!</p>
+    </div>
+</body>
+</html>
